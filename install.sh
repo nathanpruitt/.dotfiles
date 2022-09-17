@@ -16,7 +16,7 @@ zshrc() {
     echo "==========================================================="
     echo "             import zshrc                                  "
     echo "-----------------------------------------------------------"
-    cat $HOME/.dotfiles/.zshrc > $HOME/.zshrc
+    ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
     echo "==========================================================="
     echo "             import powerlevel10k                          "
     echo "-----------------------------------------------------------"
@@ -28,10 +28,3 @@ sudo ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 sudo dpkg-reconfigure --frontend noninteractive tzdata
 
 zshrc
-
-# make directly highlighting readable - needs to be after zshrc line
-echo "" >> ~/.zshrc
-echo "# remove ls and directory completion highlight color" >> ~/.zshrc
-echo "_ls_colors=':ow=01;33'" >> ~/.zshrc
-echo 'zstyle ":completion:*:default" list-colors "${(s.:.)_ls_colors}"' >> ~/.zshrc
-echo 'LS_COLORS+=$_ls_colors' >> ~/.zshrc
